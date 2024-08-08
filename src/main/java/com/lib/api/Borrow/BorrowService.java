@@ -46,7 +46,7 @@ public class BorrowService {
 
         borrowRepository.save(newBorrow);
 
-//        bookRepository.updateBookStorage(bookId, -1);
+        bookRepository.updateBookStorage(bookId, -1);
     }
 
     @Transactional
@@ -74,7 +74,7 @@ public class BorrowService {
         borrowRepository.update(newBorrow);
 
         // update the book copies
-//        bookRepository.updateBookStorage(bookId, 1);
+        bookRepository.updateBookStorage(bookId, 1);
 
     }
 }
