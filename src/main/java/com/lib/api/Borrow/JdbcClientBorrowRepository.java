@@ -33,14 +33,6 @@ public class JdbcClientBorrowRepository implements BorrowRepository {
                 .list();
     }
 
-    public void updateBorrowReturnDate(LocalDateTime returnDate, Integer bookId, Integer patronId) {
-        var updated = jdbcClient.sql("UPDATE borrows SET return_date = ? WHERE book_id = ? AND patron_id = ?")
-                .params(List.of(returnDate, bookId, patronId))
-                .update();
-
-        Assert.state(updated == 1, "Failed to update borrow: "+ patronId);
-    }
-
     public void update(Borrow borrow) {
         var updated = jdbcClient.sql("UPDATE borrows SET book_id = ?, patron_id = ?, borrowing_date = ?, return_date = ?, copies = ? WHERE id = ?")
                 .params(List.of(borrow.book_id(), borrow.patron_id(), borrow.borrowing_date(), borrow.return_date(), borrow.copies(), borrow.id()))
