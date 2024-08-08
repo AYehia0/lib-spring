@@ -1,7 +1,6 @@
 package com.lib.api.Patron;
 
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Positive;
 import org.springframework.data.annotation.Id;
 
 public record Patron(

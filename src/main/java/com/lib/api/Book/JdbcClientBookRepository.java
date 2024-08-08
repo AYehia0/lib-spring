@@ -12,7 +12,6 @@ import java.util.Optional;
 @Repository
 public class JdbcClientBookRepository implements BookRepository {
 
-    private static final Logger logger = LoggerFactory.getLogger(JdbcClientBookRepository.class);
     private final JdbcClient jdbcClient;
 
     public JdbcClientBookRepository(JdbcClient jdbcClient) {

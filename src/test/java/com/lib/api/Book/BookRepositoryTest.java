@@ -79,7 +79,7 @@ class BookRepositoryTest {
         bookRepository.save(book);
 
         Optional<Book> savedBook = bookRepository.findById(1);
-        if (!savedBook.isPresent()) {
+        if (savedBook.isEmpty()) {
             throw new RuntimeException("Book not found");
         }
 
@@ -96,7 +96,7 @@ class BookRepositoryTest {
         bookRepository.update(updatedBook, 1);
 
         Optional<Book> savedBook = bookRepository.findById(1);
-        if (!savedBook.isPresent()) {
+        if (savedBook.isEmpty()) {
             throw new RuntimeException("Book not found");
         }
 
@@ -112,7 +112,7 @@ class BookRepositoryTest {
         bookRepository.updateBookStorage(1, 5);
 
         Optional<Book> savedBook = bookRepository.findById(1);
-        if (!savedBook.isPresent()) {
+        if (savedBook.isEmpty()) {
             throw new RuntimeException("Book not found");
         }
 

@@ -3,7 +3,6 @@ package com.lib.api.Book;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -24,7 +23,7 @@ public class BooksJsonDataLoader implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         if (bookRepository.count() == 0) {
             logger.info("Loading books from JSON file");
             try (InputStream inputStream = getClass().getResourceAsStream("/data/books.json")) {

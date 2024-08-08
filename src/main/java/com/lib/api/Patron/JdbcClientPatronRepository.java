@@ -1,6 +1,5 @@
 package com.lib.api.Patron;
 
-import com.lib.api.Book.Book;
 import com.lib.api.Book.JdbcClientBookRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +13,6 @@ import java.util.Optional;
 @Repository
 public class JdbcClientPatronRepository implements PatronRepository {
 
-    private static final Logger logger = LoggerFactory.getLogger(JdbcClientBookRepository.class);
     private final JdbcClient jdbcClient;
 
     public JdbcClientPatronRepository(JdbcClient jdbcClient) {
