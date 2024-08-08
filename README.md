@@ -9,7 +9,6 @@ The system should also keep track of which books are checked out and by whom.
 - [The Database](#the-database)
     - [Design Considerations](#design-considerations)
     - [Choosing The Database](#choosing-the-database)
-    - [Database Migrations](#database-migrations)
 - [Getting Started](#getting-started)
 - [Features](#features)
 - [Takes on Design](#takes-on-design)
@@ -40,7 +39,36 @@ The system should also keep track of which books are checked out and by whom.
   overdue. [Not implemented]
 
 ## The Database
-![](.assets/database_lib.png)
+```sql
++-------------------------+          +-------------------------+
+|        books            |          |        patrons          |
++-------------------------+          +-------------------------+
+| id          (PK)        |          | id          (PK)        |
+| title       VARCHAR(255)|          | name        VARCHAR(255)|
+| author      VARCHAR(255)|          | email       VARCHAR(255)|
+| publication_year INT    |          |                 (UNIQUE)|
+| copies      INT         |          | password    VARCHAR(255)|
+| isbn        VARCHAR(20) |          +-------------------------+
+|            (UNIQUE)     |                       |
++-------------------------+                       |
+        |                                         |
+        |                                         |
+        |                                         |
+        |                                         |                                                
+        |                                         |
+        |                                         |
+        V                                         |
++-------------------------+                       |
+|        borrows          |                       |
++-------------------------+                       |
+| id          (PK)        |                       |
+| book_id     (FK)        |                       |
+| patron_id   (FK)        |<----------------------+
+| borrowing_date DATE     |
+| return_date DATE        |
+| copies      INT         |
++-------------------------+
+```
 
 ### Design Considerations
 - For sake of simplicity, the `id` of the entities is an `integer` and it's auto-incremented.
